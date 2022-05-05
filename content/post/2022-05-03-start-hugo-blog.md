@@ -9,25 +9,28 @@ tags: ["Blog"]
 categories: ["Tech"]
 ---
 
-처음에는 광고를 달아보자는 목적으로 블로그를 시작했다. 공개적으로 포스팅하기 위해 정확한 정보를 찾는 과정에서 많은 공부가 되었고 단순히 읽는 것보다 **기록하는 것이 더 뇌리에 남는다**는 것을 몸소 경험해 TIL 을 실천해보려고 한다. `TIL(Today I Learn)` 이란 오늘 배운 것을 기록하는 것이다.
+처음에는 광고를 달아보자는 목적으로 블로그를 시작했다. 공개적으로 포스팅하기 위해 정확한 정보를 찾는 과정에서 많은 공부가 되었고 단순히 읽는 것보다 **기록하는 것이 더 뇌리에 남는다**는 것을 깨닫고 TIL 을 실천해보려고 한다.
+> `TIL(Today I Learn)` 이란 오늘 배운 것을 기록하는 것이다.
 
-혼자 하면 분명 작심삼일이 될게 뻔했으므로 책임감을 지기 위해 2주 전부터 블로그 스터디를 시작했다. 첫 주에는 블로그 플랫폼을 결정하고 첫 포스팅을 했다. 원래 이용하던 티스토리를 이용할까 했는데, 티스토리와 관련된 기능들이 컨텐츠 읽는 것을 방해한다는 느낌이 들었고 무엇보다 '나만의 블로그' 라는 느낌이 없어 `Git blog` 로 만들기로 했다.
+여럿이서 하면 더 즐거울 것 같아 2주 전부터 블로그 스터디를 시작했다. 첫 주에는 블로그 플랫폼을 결정하고 첫 포스팅을 했다. 원래 이용하던 티스토리를 이용할까 했는데, 티스토리와 관련된 기능들이 컨텐츠 읽는 것을 방해한다는 느낌이 들었고 무엇보다 '나만의 블로그' 라는 느낌이 없어 직접 블로그를 만들기로 했다.
+
+스터디원 중 한 분은 Git Issue 를 CMS로 사용해 블로그를 구축했다. 이후 나도 매번 글을 작성하고 커밋하는 작업을 피하기 위해 Git Issue 를 이용해볼까 한다. 일단은 Hugo 와 Git Pages 를 이용해 블로그를 만들었다.
 
 ---
 
 ## Hugo 를 선택한 이유
 
-블로그는 나만 쓰고 다른 사람은 읽는 사이트라 정적 호스팅 만으로도 충분하다. 유명한 정적 호스팅 플랫폼으로는 `Jekyll`, `Hexo`, `Hugo` 가 있다. `Jekyll`은 레퍼런스가 가장 많지만 컨텐츠가 많아질 수록 속도가 느려진다는 이슈가 있어 남은 둘 중 고민 하다, `Hexo` 보다 레퍼런스가 적지만 `Go` 언어를 사용해서 **속도가 가장 빠르다**는 점에서 `Hugo` 를 선택했다.
+블로그는 정적 웹 사이트다. 유명한 정적 웹 호스팅 플랫폼으로는 `Jekyll`, `Hexo`, `Hugo` 가 있다. `Jekyll`은 레퍼런스가 가장 많지만 컨텐츠가 많아질 수록 속도가 느려진다는 이슈가 있어 남은 둘 중 고민 하다, `Hexo` 보다 레퍼런스가 적지만 `Go` 언어를 사용해서 **속도가 가장 빠르다**는 점에서 `Hugo` 를 선택했다.
 
 ---
 
 ## 블로그 만들기
 
-제일 먼저 한 것은 테마 고르기다. 최대한 글을 보기 깔끔한 테마로 골랐다. 내가 고른 테마는 [hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite) 이다. 이 테마에는 Quick Start 가 제공돼서 그대로 따라하면 된다. 혹은 [Hugo Document - Quick Start](https://gohugo.io/getting-started/quick-start/) 를 참고해도 된다. 아래는 내가 블로그를 만들고 배포한 과정을 적었다.
+제일 먼저 한 것은 테마 고르기다. 테마는 [Hugo 공식 페이지의 Themes 탭](https://themes.gohugo.io/)에서 볼 수 있다. 최대한 글을 보기 깔끔한 테마로 골랐다. 내가 고른 테마는 [hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite) 이다. 이 테마에는 Quick Start 가 제공돼서 그대로 따라하면 된다. 혹은 [Hugo Document - Quick Start](https://gohugo.io/getting-started/quick-start/) 를 참고해도 된다. 아래는 내가 블로그를 만들고 배포한 과정을 적었다.
 
 ### 1. hugo 프로젝트 생성 후 테마 적용하기
 
-위의 Hugo Document 에서 Hugo 설치 후 Hugo Project 를 생성한다.
+[Hugo Document - Hugo 설치 방법](https://gohugo.io/getting-started/installing/)을 참고하여 설치 후 Hugo Project 를 생성한다.
 
 ```bash
 $ hugo new site git-blog
@@ -40,9 +43,9 @@ $ cd git-blog
 $ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
 ```
 
-> 서브모듈로 추가하면 관리가 용이해진다는 장점이 있다.
+> 서브모듈로 추가하면 각각 독립적인 깃 저장소로 분리하여 관리할 수 있다는 장점이 있다.
 
-themes/hugo-theme-cleanwhite/exampleSite 디렉토리의 `config.toml` 내용을 루트 폴더의 `config.toml` 파일에 덮어쓰고 내 블로그에 맞게 커스텀한다.
+`themes/hugo-theme-cleanwhite/exampleSite` 디렉토리의 `config.toml` 내용을 루트 폴더의 `config.toml` 파일에 덮어쓰고 내 블로그에 맞게 커스텀한다.
 
 ```toml
 baseurl = "https://borajin.github.io"
@@ -97,7 +100,7 @@ categories: ["Tech"]
 ...
 ```
 
-### 2. git repository 연결 및 build 하기
+### 3. git repository 연결 및 build 하기
 
 hugo 는 repository 를 2개 가진다. 하나는 **hugo 프로젝트 전체를 저장할 용도**이고 다른 하나는 **build 한 파일을 저장할 용도**이다. 두 번째 repository 는 git pages 로 배포해야 하므로 이름을 `{username}.github.io` 으로 지어야 한다. 나는 이렇게 두 레파지토리를 생성했다.
 
@@ -115,9 +118,15 @@ $ hugo  # build 커맨드. public 디렉토리가 생성되고 그 하위에 빌
 $ git submodule add -b main https://github.com/borajin/borajin.github.io.git public
 ```
 
+이후 hugo 프로젝트를 clone 하면 submodule 로 추가했던 테마나 public 폴더가 텅 비어있을 것이다. 서브모듈도 같이 클론하고 서브모듈의 업데이트 내용을 자동으로 반영하려면 아래 옵션을 덧붙여준다.  
+
+```bash
+git clone --recurse-submodules https://github.com/borajin/borajin-blog-contents.git
+```
+
 > 만약 main branch 를 찾을 수 없다는 에러가 뜨면 `git branch -M main` 를 실행한다.
 
-### 3. git pages 로 배포하고 쉘 스크립트 만들기
+### 4. git pages 로 배포하고 쉘 스크립트 만들기
 
 빌드 파일을 push 하면 저절로 git pages 로 배포가 된다. `https://{username}.github.io/` 주소로 들어가면 확인할 수 있다.
 
@@ -187,7 +196,6 @@ $ ./deploy.sh
 ```
 
 만약 블로그 주소로 들어가도 변경사항이 적용 되지 않는다면 `깃 레파지토리` 에 들어가 우측 Languages 위의 `Environments` 를 확인해보자. `github-pages` 를 클릭하면 배포 상태가 어떤지 확인할 수 있다.
-![github-pages](2022-05-03-start-hugo-blog.png)
 
 ---
 
